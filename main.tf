@@ -113,7 +113,7 @@ resource "aws_launch_template" "bastion" {
 }
 
 resource "aws_autoscaling_group" "bastion" {
-  name = var.apply_changes_immediately ? "bastion-${aws_launch_template.bastion.latest_version}" : var.name
+  name = var.apply_changes_immediately ? "${var.name}-${aws_launch_template.bastion.latest_version}" : var.name
 
   vpc_zone_identifier = var.subnet_ids
 
